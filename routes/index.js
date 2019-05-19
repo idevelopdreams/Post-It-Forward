@@ -9,7 +9,7 @@ router.use('/users', users)
 
 
 router.get('/', (req, res) => {
-    res.send('hello root');
+    res.render('landing')
 })
 
 
