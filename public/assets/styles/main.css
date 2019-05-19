@@ -1,3 +1,27 @@
-body {
-    background: antiquewhite;
+
+/* landing page   ****************************************/ 
+
+/* styling attention pic */
+#image {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url("/assets/img/gift.jpeg ");
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+}
+
+html, body {
+    height: 61%;
+    margin: 0;
+    padding: 0;
+}
+
+/* FOOTER   ****************************************/ 
+
+/* social icons */
+img {
+    width: 25px;
 }
