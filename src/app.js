@@ -7,16 +7,16 @@ import mongoose from 'mongoose';
 import session from 'express-session';
 const MongoStore = require('connect-mongo')(session);
 import routes from '../routes';
+import models, { connectDb } from '../models';
 
 // starting application
 const app = express();
 
-// mongodb connection
-mongoose.connect('mongodb://localhost:27017/my_database', { useNewUrlParser: true, useCreateIndex: true });
+// mongodb setup
+connectDb();
 const db = mongoose.connection;
 // mongo error handler
 db.on('error', console.error.bind(console, 'connection error:'));
-
 // use session for tracking logins
 app.use(session({
     secret: process.env.SECRETSESSION,
@@ -37,9 +37,17 @@ app.use( (req, res, next) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// setting template engine
+app.set('view engine', 'ejs');
+
 // application middleware
+app.use( (err, req, res, next) => { 
+    req.context = { models };
+    next();
+});
+
 app.use(cors()); // handles crossorigin request defaul is *
-app.use(express.static('../public')); // where to look for static files 
+app.use(express.static('./public')); // where to look for static files 
 app.use(routes); // our routing manager for all requests
 
 // custom error 
