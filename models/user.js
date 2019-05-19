@@ -1,7 +1,10 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 
-const userSchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const userSchema = Schema({
+    _id: Schema.Types.ObjectId,
     email: {
         type: String,
         unique: true,
@@ -21,7 +24,9 @@ const userSchema = new mongoose.Schema({
     createdAt: { 
         type: Date, 
         default: Date.now 
-    }
+    },
+    // user has many order
+    orders: [{ type: Schema.Types.ObjectId, ref: 'Order' }]
 });
 
 // authenticate input against whats in the db
