@@ -1,22 +1,16 @@
-********** TEMPLATE FOR APPS **********
+This aplication allows you to donate on behalf of a friend to a charity of your choosing. 
 
-uses:
-express
-mongodb
+to load this application locally.
 
-An express application template with an MVC approach in mind. 
-routes folder contains all the routes of the application the logic
-of the routes are in the controllers. 
+run: npm install
+run: npm start
 
-the application also has a section to create your own middleware.
-and public folder for static files the heart of the aplication is in the source folder.
-
-the application currently has a custom user authentication utilizing express sessions and cookies.
+optional:
+create file: .env and create env variable for the name of the database your gonna use and assign it to variable "DATABASE_URL", create second env var call it "SECRETSESSION" and assign it a random string
+run: mongod
 
 
-future: 
-create token authentication (JWT) (separate branch)
-create Oath authentication system for github, facebook, twitter and google with passport (seperate branch)
+
 
 
 
